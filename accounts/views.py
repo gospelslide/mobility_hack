@@ -31,6 +31,9 @@ def home(request):
 	url = "https://api.razorpay.com/v1/payments/?count=5"
 	resp = requests.get(url, data={}, 
 		auth=(RAZOR_ID, RAZOR_KEY)).json()
+
+	for i in range(5):
+		resp['items'][i]['amount']/=100
 	return render(request, 'dashboard.html', {'user': current_user, 'transactions': resp})
 
 
