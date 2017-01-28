@@ -23,7 +23,7 @@ urlpatterns = [
     url(r'^accounts/', include('accounts.urls')),
     # url(r'^chat/', include('chat.urls')),
     # url(r'^skype/', include('skype.urls')),
-    # url(r'^payment/', include('payment.urls'))
+    url(r'^payment/', include('payment.urls'))
 ]
 
 if settings.DEBUG:

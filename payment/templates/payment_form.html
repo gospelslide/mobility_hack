@@ -1,0 +1,18 @@
+<form action="/payment/capture/" method="POST">
+{% csrf_token %}
+<!-- Note that the amount is in paise = 50 INR -->
+<script
+    src="https://checkout.razorpay.com/v1/checkout.js"
+    data-key="rzp_test_qHzwBeidvaZnvi"
+    data-amount="8000"
+    data-buttontext="Pay"
+    data-name="HDFC"
+    data-description="Payment Description"
+    data-image="https://pbs.twimg.com/profile_images/2220187212/HDFC_Grid_with_white_outline.jpg"
+    data-prefill.name="Vishal Sheth"
+    data-prefill.email="bob@b.com"
+    data-theme.color="#F37254"
+></script>
+<input type="hidden" value="Hidden Element" name="hidden">
+<input type="hidden" value="8000" name="amount">
+</form>

@@ -27,7 +27,7 @@ def verify(request):
 
 def home(request):
 	current_user = request.user
-	url = "https://api.razorpay.com/v1/payments/?count=2"
+	url = "https://api.razorpay.com/v1/payments/?count=5"
 	resp = requests.get(url, data={}, 
 		auth=(RAZOR_ID, RAZOR_KEY)).json()
 	return render(request, 'dashboard.html', {'user': current_user, 'transactions': resp})
