@@ -4,6 +4,7 @@ from django.template import loader
 from django.contrib.auth.models import User 
 from django.contrib.auth import authenticate, login, logout
 from constants import *
+from callfriend import begin
 import requests
 
 # Create your views here.
@@ -46,3 +47,6 @@ def chatbot(request):
 def chat(request):
 	return render(request, 'chat.html')
 
+def call(request):
+	begin()
+	return redirect('/accounts/chat')

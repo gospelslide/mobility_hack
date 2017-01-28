@@ -30,20 +30,12 @@ http://www.templatemo.com/preview/templatemo_415_dashboard
         <ul class="templatemo-sidebar-menu">
           <li style="margin-left: 10px"><h4>Hey,</h></li>
           <li style="margin-left: 15px">
-            <h3><a href="/accounts/home/">{{ user.first_name }}</a></h3>
+            <h3><a href="/agent/home/">{{ user.first_name }}</a></h3>
           </li>
           <li><a href="#"><i class="fa fa-home"></i>Call</a></li>
-          <li class="sub open">
-            <a href="javascript:;">
-              <i class="fa fa-database"></i> Chat Menu <div class="pull-right"><span class="caret"></span></div>
-            </a>
-            <ul class="templatemo-submenu">
-              <li><a href="/accounts/chat/">Executive</a></li>
-              <li><a href="/accounts/chatbot/">Bot</a></li>
-            </ul>
-          </li>
-          <li><a href="/payment/initiate/"><i class="fa fa-cog"></i>Make Payment</a></li>
-          <li><a href="javascript:;" data-toggle="modal" data-target="#confirmModal"><i class="fa fa-sign-out"></i>Sign Out</a></li>
+          <li><a href="#"><i class="fa fa-home"></i>Chat</a></li>
+          <li><a href="/agent/initiate_payment/"><i class="fa fa-cog"></i>Initiate Payment</a></li>
+          <li><a href="/agent/logout/" data-toggle="modal" data-target="#confirmModal"><i class="fa fa-sign-out"></i>Sign Out</a></li>
         </ul>
       </div><!--/.navbar-collapse -->
 
@@ -120,7 +112,7 @@ http://www.templatemo.com/preview/templatemo_415_dashboard
               <h4 class="modal-title" id="myModalLabel">Are you sure you want to sign out?</h4>
             </div>
             <div class="modal-footer">
-              <a href="accounts/logout/" class="btn btn-primary">Yes</a>
+              <a href="agent/logout/" class="btn btn-primary">Yes</a>
               <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
             </div>
           </div>

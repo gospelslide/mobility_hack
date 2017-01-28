@@ -21,7 +21,8 @@ from django.conf.urls.static import static
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^accounts/', include('accounts.urls')),
-    # url(r'^chat/', include('chat.urls')),
+    url(r'^agent/', include('agent.urls')),
+    url(r'^chat/', include('chat.urls')),
     # url(r'^skype/', include('skype.urls')),
     url(r'^payment/', include('payment.urls'))
 ]

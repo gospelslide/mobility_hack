@@ -4,7 +4,7 @@
 <script
     src="https://checkout.razorpay.com/v1/checkout.js"
     data-key="rzp_test_qHzwBeidvaZnvi"
-    data-amount="8000"
+    data-amount="{{ payment.premium }}"
     data-buttontext="Pay"
     data-name="HDFC"
     data-description="Payment Description"
@@ -14,5 +14,5 @@
     data-theme.color="#F37254"
 ></script>
 <input type="hidden" value="Hidden Element" name="hidden">
-<input type="hidden" value="8000" name="amount">
+<input type="hidden" value="{{ payment.premium }}" name="amount">
 </form>

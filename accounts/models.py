@@ -9,10 +9,10 @@ class Policy(models.Model):
 	end_date = models.DateField()
 	premium = models.IntegerField()
 	customer_email = models.EmailField()
-	term = models.IntegerField()
+	customer_name = models.CharField(max_length=254, null=True)
 	maturity_amt = models.IntegerField()
 	policy_id = models.CharField(max_length=254)
-
+	pending = models.BooleanField(default=False)
 
 class Online(models.Model):
 	email = models.EmailField()

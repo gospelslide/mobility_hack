@@ -1,23 +1,33 @@
 $('#chat-form').on('submit', function(event){
+
     event.preventDefault();
+    
+    var v=$("#file").val();
 
-    $.ajax({
-        url : '/post/',
-        type : 'POST',
-        data : { msgbox : $('#chat-msg').val() },
+    if(v)
+    {
+    }
+    else
+    {
+        $.ajax({
+            url : '/chat/post/',
+            type : 'POST',
+            data : { msgbox : $('#chat-msg').val() },
+            success : function(json) {
+                $('#chat-msg').val('');
+                $('#msg-list').append('<li class="text-right list-group-item">' + json.msg + '</li>');
+                var chatlist = document.getElementById('msg-list-div');
+                chatlist.scrollTop = chatlist.scrollHeight;
+            }
+        });
+    }
 
-        success : function(json){
-            $('#chat-msg').val('');
-            $('#msg-list').append('<li class="text-right list-group-item">' + json.msg + '</li>');
-            var chatlist = document.getElementById('msg-list-div');
-            chatlist.scrollTop = chatlist.scrollHeight;
-        }
-    });
+
 });
 
 function getMessages(){
     if (!scrolling) {
-        $.get('/messages/', function(messages){
+        $.get('/chat/messages/', function(messages){
             $('#msg-list').html(messages);
             var chatlist = document.getElementById('msg-list-div');
             chatlist.scrollTop = chatlist.scrollHeight;
@@ -35,7 +45,7 @@ $(function(){
 });
 
 $(document).ready(function() {
-     $('#send').attr('disabled','disabled');
+/*     $('#send').attr('disabled','disabled');
      $('#chat-msg').keyup(function() {
         if($(this).val() != '') {
            $('#send').removeAttr('disabled');
@@ -50,7 +60,7 @@ $(document).ready(function() {
         else {
         $('#send').attr('disabled','disabled');
         }
- });
+*/ });
 
 
 

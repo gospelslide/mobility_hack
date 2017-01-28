@@ -6,7 +6,9 @@ urlpatterns = [
 	url(r'verify/$', views.verify),
 	url(r'home/$', views.home),
 	url(r'logout/$', views.log_out),
-	url(r'chatbot/$', views.chatbot),
 	url(r'chat/$', views.chat),
-	url(r'call/$', views.call)
+	url(r'initiate_payment/$', views.initiate_payment),
+	url(r'add_payment/$', views.add_payment),
+	url(r'call/$', views.call),
+	# url(r'search/$', views.search),
 ]
