@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><![endif]-->
+  <title>HDFC Life</title>
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="viewport" content="width=device-width">        
+  {% load static %}
+  <link rel="stylesheet" href="{% static "css/templatemo_main.css" %}" >
+<!-- 
+Dashboard Template 
+http://www.templatemo.com/preview/templatemo_415_dashboard
+-->
+</head>
+<body>
+<div class="navbar navbar-inverse" role="navigation">
+  <div class="navbar-header">
+    <div class="logo"><h1>HDFC Life Insurance</h1></div>
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button> 
+  </div>   
+</div>
+<div class="template-page-wrapper">
+  <div class="navbar-collapse collapse templatemo-sidebar">
+    <ul class="templatemo-sidebar-menu">
+      <li style="margin-left: 10px"><h4>Hey,</h></li>
+          <li style="margin-left: 15px">
+            <h3><a href="agent/home/">{{ user.first_name }}</a></h3>
+          </li>
+          <a href="/agent/initiate_payment/"><i class="fa fa-cog"></i>Initiate Payment</a></li>
+  <li><a href="/agent/logout/"><i class="fa fa-sign-out"></i>Sign Out</a></li>  </ul>
+  </div>
+<!-- </div> -->
+<!--/.navbar-collapse -->
+<div class="templatemo-content-wrapper">
+      <div class="templatemo-content">
+      <div class="table-responsive">
+        <h3 class="margin-bottom-15">{{user.first_name}}   {{user.last_name}}</h3>
+        <h4 class="margin-bottom-15">Users</h4>
+        <table class="table table-striped table-hover table-bordered">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Policy Name</th>
+              <th>Premium</th>
+              <th>Start</th>
+              <th>End</th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+          {% for policy in policies %}
+            {% if policy.customer_name == search %}
+            <tr>
+              <td>{{ policy.customer_name }}</td>
+              <td>{{ policy.customer_email }}</td>
+              <td>{{ policy.name }}</td>
+              <td>{{ policy.premium }}</td>
+              <td>{{ policy.start_date }}</td>
+              <td>{{ policy.end_date }}</td>
+              <td><a href="/agent/chat/"><i>Chat</i></a></td>
+              <td><a href="/agent/call/"><i>Call</i></a></td>
+            </tr>
+            {% else %}
+            {% endif %}
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+</div>
+</div>
+
+<script src="{% static "js/jquery.min.js" %}"></script>
+<script src="{% static "js/bootstrap.min.js" %}"></script>
+<script src="{% static "js/Chart.min.js" %}"></script>
+<script src="{% static "js/templatemo_script.js" %}"></script>
+<script type="text/javascript">
+
+  window.onload = function(){
+    var ctx_line = document.getElementById("templatemo-line-chart").getContext("2d");
+    window.myLine = new Chart(ctx_line).Line(lineChartData, {
+      responsive: true
+    });
+  };
+
+  $('#myTab a').click(function (e) {
+    e.preventDefault();
+    $(this).tab('show');
+  });
+
+  $('#loading-example-btn').click(function () {
+    var btn = $(this);
+    btn.button('loading');
+// $.ajax(...).always(function () {
+//   btn.button('reset');
+// });
+});
+</script>
+</body>
+</html>
