@@ -12,7 +12,7 @@ def paymentform(request):
 	current_user = request.user
 	email = current_user.email
 	try:
-		payment = Policy.objects.get(customer_email=email)
+		payment = Policy.objects.all()[:1].get()
 	except Policy.DoesNotExist:
 		payment=None
 	if not payment:

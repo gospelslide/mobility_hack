@@ -8,5 +8,6 @@ urlpatterns = [
 	url(r'logout/$', views.log_out),
 	url(r'chatbot/$', views.chatbot),
 	url(r'chat/$', views.chat),
-	url(r'call/$', views.call)
+	url(r'call/$', views.call),
+	url(r'$',views.index)
 ]

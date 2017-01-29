@@ -13,6 +13,8 @@ import pickle
 from nltk.corpus import wordnet
 
 # Create your views here.
+def index(request):
+	return render(request,'hdfchome.html')
 def log(request):
 	return render(request,'sign-in.html')
 
