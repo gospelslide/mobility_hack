@@ -4,6 +4,8 @@ from django.template import loader
 from django.contrib.auth.models import User 
 from django.contrib.auth import authenticate, login, logout
 from constants import *
+from chat.forms import DocumentForm
+from chat.models import Chat,Document
 from callfriend import begin
 import requests
 
@@ -48,7 +50,10 @@ def chatbot(request):
 
 
 def chat(request):
-	return render(request, 'chat.html')
+	c = Chat.objects.all()
+	form = DocumentForm() # A empty, unbound form
+	documents = Document.objects.all()
+	return render(request, "chat.html", {'home': 'active', 'chat': c,'document':documents,'form': form })        
 
 def call(request):
 	begin()
