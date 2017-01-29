@@ -8,6 +8,7 @@
   <meta name="viewport" content="width=device-width">        
   {% load static %}
   <link rel="stylesheet" href="{% static "css/templatemo_main.css" %}" >
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
 <!-- 
 Dashboard Template 
 http://www.templatemo.com/preview/templatemo_415_dashboard
@@ -31,9 +32,7 @@ http://www.templatemo.com/preview/templatemo_415_dashboard
       <li style="margin-left: 10px"><h4>Hey,</h></li>
           <li style="margin-left: 15px">
             <h3><a href="agent/home/">{{ user.first_name }}</a></h3>
-          </li>
-          <li><a href="/agent/call"><i class="fa fa-home"></i>Call</a></li>
-          
+          </li>          
       <li><a href="/agent/initiate_payment/"><i class="fa fa-cog"></i>Initiate Payment</a></li>
   <li><a href="/agent/logout/"><i class="fa fa-sign-out"></i>Sign Out</a></li>  </ul>
   </div>
@@ -71,6 +70,7 @@ http://www.templatemo.com/preview/templatemo_415_dashboard
               <th>End</th>
               <th></th>
               <th></th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -83,7 +83,8 @@ http://www.templatemo.com/preview/templatemo_415_dashboard
               <td>{{ policy.start_date }}</td>
               <td>{{ policy.end_date }}</td>
               <td><a href="/agent/chat/"><i>Chat</i></a></td>
-              <td><a href="/agent/call/"><i>Call</i></a></td>
+              <td><a href="/agent/call/"><i>Call Skype</i></a></td>
+              <td><div class="g-hangout" data-render="createhangout"></div></td>
             </tr>
           {% endfor %}
           </tbody>

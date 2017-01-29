@@ -7,6 +7,8 @@ from constants import *
 from accounts.models import Policy
 from callfriend import begin
 import requests
+from chat.forms import DocumentForm
+from chat.models import Chat,Document
 
 # Create your views here.
 def log(request):
@@ -65,7 +67,10 @@ def log_out(request):
 
 
 def chat(request):
-	return render(request, 'agent_chat.html')
+	c = Chat.objects.all()
+	form = DocumentForm() # A empty, unbound form
+	documents = Document.objects.all()
+	return render(request, "chat.html", {'home': 'active', 'chat': c,'document':documents,'form': form })        
 
 
 def call(request):

@@ -12,4 +12,4 @@ class Chat(models.Model):
    def __unicode__(self):
        return self.message
 class Document(models.Model):
-    docfile = models.FileField()
+    docfile = models.FileField() 

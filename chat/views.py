@@ -33,6 +33,10 @@ def messages(request):
     c = Chat.objects.all()
     return render(request, 'messages.html', {'chat': c})
 
+def messages_agent(request):
+    c = Chat.objects.all()
+    return render(request, 'messages.html', {'chat': c})        
+
 @csrf_exempt
 def Post_File(request):
     if request.method == 'POST' :
@@ -64,3 +68,29 @@ def Home(request):
     form = DocumentForm() # A empty, unbound form
     documents = Document.objects.all()
     return render(request, "chat.html", {'home': 'active', 'chat': c,'document':documents,'form': form })        
+
+@csrf_exempt
+def Post_File_Agent(request):
+    if request.method == 'POST' :
+        form = DocumentForm(request.POST, request.FILES)
+        if form.is_valid():
+            newdoc = Document(docfile = request.FILES['docfile'])
+            newdoc.save()
+
+            myfile = request.FILES['docfile']
+            fs = FileSystemStorage()
+            filename = fs.save(myfile.name, myfile)
+            path = "C:/Django/hack/mobility_hack/media/" + str(myfile.name)
+            chat2 = Chat(user=request.user, message=path,isFile=False)
+            print(path)
+            attach_val = 1
+            chat2.save()
+            uploaded_file_url = fs.url(filename)
+            c = Chat.objects.all()
+            form = DocumentForm()
+            return render(request, "agent_chat.html", {'chat': c,'form': form })
+    else:
+        uploaded_file_url = fs.url(filename)
+        c = Chat.objects.all()
+        form = DocumentForm()
+        return render(request, "agent_chat.html", {'chat': c,'form': form })        
