@@ -44,6 +44,22 @@ http://www.templatemo.com/preview/templatemo_415_dashboard
       <div class="table-responsive">
         <h3 class="margin-bottom-15">{{user.first_name}}   {{user.last_name}}</h3>
         <h4 class="margin-bottom-15">Users</h4>
+        <form method="GET" action="/agent/find/">
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Search by Customer Name</label>
+                            <input type="tel" class="form-control" placeholder="Search by Customer Name" id="name" required data-validation-required-message="Please enter a name" name="name" required>
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div id="success"></div>
+                        <div class="row">
+                            <div class="form-group col-xs-12">
+                                <button type="submit" class="btn btn-success btn-m" style="float:right;">Find</button>
+                            </div>
+                        </div>
+                    </form>
+            
         <table class="table table-striped table-hover table-bordered">
           <thead>
             <tr>
@@ -56,7 +72,7 @@ http://www.templatemo.com/preview/templatemo_415_dashboard
             </tr>
           </thead>
           <tbody>
-          {% for policy in policies.items %}
+          {% for policy in policies %}
             <tr>
               <td>{{ policy.customer_name }}</td>
               <td>{{ policy.customer_email }}</td>

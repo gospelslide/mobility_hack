@@ -50,8 +50,14 @@ def add_payment(request):
 
 def home(request):
 	policies = Policy.objects.all()
+	#return HttpResponse(policies)
 	return render(request, 'agent_dashboard.html', {'policies': policies})
 
+def find(request):
+	search = request.GET['name']
+	policies = Policy.objects.all()
+	#return HttpResponse(policies[1].customer_name==search)
+	return render(request, 'agent_search.html', {'search': search,'policies': policies})	
 
 def log_out(request):
 	logout(request)
