@@ -54,7 +54,6 @@ def home(request):
 
 
 def log_out(request):
-	return HttpResponse(request)
 	logout(request)
 	return redirect('/agent/login')
 
